@@ -1,4 +1,5 @@
-# Three.js 
+# Three.js Interactive Sphere
+![Sphere](static/sphere.gif)
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
