@@ -52,13 +52,6 @@ pointLight1.position.z = -1.65;
 pointLight1.intensity = 10;
 scene.add(pointLight1);
 
-const light1 = gui.addFolder('Light 1');
-
-light1.add(pointLight1.position, 'y').min(-3).max(3).step(0.01);
-light1.add(pointLight1.position, 'x').min(-6).max(6).step(0.01);
-light1.add(pointLight1.position, 'z').min(-3).max(3).step(0.01);
-light1.add(pointLight1, 'intensity').min(0).max(10).step(0.01);
-
 const pointLight2 = new THREE.PointLight(0xc0a9, 2);
 pointLight2.position.x = 2.13;
 pointLight2.position.y = -2.71;
@@ -66,17 +59,18 @@ pointLight2.position.z = -3;
 pointLight2.intensity = 6.8;
 scene.add(pointLight2);
 
-const light2 = gui.addFolder('Light 2');
+/** CONTROLS  */
+// const light2 = gui.addFolder('Light 2');
 
-light2.add(pointLight2.position, 'y').min(-3).max(3).step(0.01);
-light2.add(pointLight2.position, 'x').min(-6).max(6).step(0.01);
-light2.add(pointLight2.position, 'z').min(-3).max(3).step(0.01);
-light2.add(pointLight2, 'intensity').min(0).max(10).step(0.01);
+// light2.add(pointLight2.position, 'y').min(-3).max(3).step(0.01);
+// light2.add(pointLight2.position, 'x').min(-6).max(6).step(0.01);
+// light2.add(pointLight2.position, 'z').min(-3).max(3).step(0.01);
+// light2.add(pointLight2, 'intensity').min(0).max(10).step(0.01);
 
-const light2Color = { color: 0xff0000 };
-light2.addColor(light2Color, 'color').onChange(() => {
-  pointLight2.color.set(light2Color.color);
-});
+// const light2Color = { color: 0xff0000 };
+// light2.addColor(light2Color, 'color').onChange(() => {
+//   pointLight2.color.set(light2Color.color);
+// });
 
 /**
  * Sizes
@@ -147,6 +141,12 @@ function onDocumentMouseMove(event) {
   mouseY = event.clientY - windowY;
 }
 
+// const updateSphere = (event) => {
+//   sphere.position.y = window.scrollY * 0.001;
+// };
+
+// document.addEventListener('scroll', updateSphere);
+
 const clock = new THREE.Clock();
 
 const tick = () => {
@@ -160,7 +160,7 @@ const tick = () => {
 
   sphere.rotation.y += 0.5 * (targetX - sphere.rotation.y);
   sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
-  sphere.rotation.z += -0.05 * (targetY - sphere.rotation.x);
+  sphere.position.z += -0.05 * (targetY - sphere.rotation.x);
   // Update Orbital Controls
   // controls.update()
 
